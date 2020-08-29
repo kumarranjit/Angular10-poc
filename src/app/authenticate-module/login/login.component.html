@@ -1,0 +1,38 @@
+<div class='container'>
+    <form class="form-signin" [formGroup]='loginForm' (ngSubmit)='login()'>
+        <div class="form-label-group">
+            <label for="inputEmail">Email address</label>
+            <input type="email" id="inputEmail" class="form-control" placeholder="Email address"
+                formControlName="email">      
+            <div class="text-danger">
+                <span
+                    *ngIf="isSubmit && loginForm.controls.email.errors && loginForm.controls.email.errors.required">
+                    Email
+                    Required </span>
+                <span *ngIf="loginForm.controls.email.errors && loginForm.controls.email.errors.email"> Enter a
+                    valid email
+                </span>
+            </div>
+        </div>
+        <div class="form-label-group">
+            <label for="inputPassword">Password</label>
+            <input type="password" id="inputPassword" class="form-control" placeholder="Password"
+                formControlName="password">
+            <div class="text-danger">
+                <span
+                    *ngIf="isSubmit && loginForm.controls.password.errors && loginForm.controls.password.errors.required">
+                    Password Required </span>
+                <span
+                    *ngIf="loginForm.controls.password.errors && loginForm.controls.password.errors.minlength">
+                    Password Should Min 6 </span>
+                <span *ngIf="loginForm.controls.password.errors && loginForm.controls.password.errors.pattern">
+                    Password Pattern Error </span>
+            </div>
+        </div>
+        <div style="margin-top: 10px;">
+            <button class=" btn btn-outline-success btn-lg btn-block" type="submit">Sign in</button>
+            <button class="btn btn-lg btn-outline-primary btn-block" routerLink="/register" routerLinkActive='is-active'
+                type="submit">New User</button>
+        </div>
+    </form>
+</div>
